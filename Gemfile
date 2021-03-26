@@ -8,6 +8,9 @@ gem "hanami-validations"
 gem "awesome_print"
 
 group :development, :test do
+  gem "guard-puma"
+  gem "guard-standardrb"
+  gem "guard-livereload", "~> 2.5", require: false
   gem "pry-byebug", platforms: [:mri, :mingw, :x64_mingw]
 end
 
