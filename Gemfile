@@ -5,6 +5,7 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 gem "puma"
 gem "hanami-api", "~> 0.2.0", require: "hanami/api"
 gem "hanami-validations"
+gem "hanami-controller"
 gem "activesupport", require: "active_support"
 gem "awesome_print"
 

@@ -72,6 +72,9 @@ GEM
       standardrb
     hanami-api (0.2.0)
       hanami-router (~> 2.0.alpha)
+    hanami-controller (1.3.3)
+      hanami-utils (~> 1.3)
+      rack (~> 2.0)
     hanami-router (2.0.0.alpha4)
       mustermann (~> 1.0)
       mustermann-contrib (~> 1.0)
@@ -182,6 +185,7 @@ DEPENDENCIES
   guard-puma
   guard-standardrb
   hanami-api (~> 0.2.0)
+  hanami-controller
   hanami-validations
   pry-byebug
   puma

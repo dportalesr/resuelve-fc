@@ -3,7 +3,11 @@
 require_relative "environment"
 
 class ResuelveFc < Hanami::API
-  get "/" do
-    "Hello world"
+  use Hanami::Middleware::BodyParser, :json
+
+  scope :v1 do
+    scope :payrolls do
+      post "/", to: App::Actions::CalculatePayrolls.new
+    end
   end
 end
