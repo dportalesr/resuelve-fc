@@ -16,6 +16,7 @@ end
 
 group :test do
   gem "rspec"
+  gem "rspec_api_documentation"
 end
 
 group :production do
