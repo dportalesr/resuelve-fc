@@ -22,12 +22,38 @@ resource "Payrolls" do
     end
 
     context "400" do
-      context "with INVALID player data" do
+      context "with empty payload" do
         let(:payload) do
-          {jugadores: Array(5) { make_player(equipo: nil) }}
+          {}
         end
 
-        example_request "Invalid request" do
+        example "Invalid request: No payload" do
+          do_request(payload)
+          expect(status).to eq(400)
+        end
+      end
+
+      context "with INVALID player data" do
+        let(:payload) do
+          {jugadores: Array.new(5) { make_player(equipo: nil) }}
+        end
+
+        example "Invalid request: player has no team" do
+          do_request(payload)
+          expect(status).to eq(400)
+        end
+      end
+
+      context "with INVALID team name" do
+        let(:payload) do
+          {
+            jugadores: Array.new(5) { make_player },
+            equipos: [make_team(name: "INVALID")]
+          }
+        end
+
+        example "Invalid request: team has no name" do
+          do_request(payload)
           expect(status).to eq(400)
         end
       end

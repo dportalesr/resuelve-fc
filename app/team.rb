@@ -13,7 +13,7 @@ module App
       required(:equipo).filled(:str?, included_in?: LIST)
       required(:niveles).schema do
         LEVELS.each do |level|
-          required(level).filled(:int?, gt?: 0)
+          required(level.to_sym).filled(:int?, gt?: 0)
         end
       end
     end

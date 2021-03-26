@@ -11,6 +11,7 @@ module App
       end
 
       def call(params)
+        halt(400) unless params.valid?
       end
     end
   end
