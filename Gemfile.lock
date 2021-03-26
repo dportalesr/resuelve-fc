@@ -118,6 +118,8 @@ GEM
     puma (5.2.2)
       nio4r (~> 2.0)
     rack (2.2.3)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rainbow (3.0.0)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
@@ -174,6 +176,7 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
+  activesupport
   awesome_print
   guard-livereload (~> 2.5)
   guard-puma
@@ -182,6 +185,7 @@ DEPENDENCIES
   hanami-validations
   pry-byebug
   puma
+  rack-test
   rspec
   rspec_api_documentation
 

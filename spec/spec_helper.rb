@@ -2,6 +2,7 @@ ENV["RACK_ENV"] = "test"
 
 require_relative "../app"
 require "rspec_api_documentation/dsl"
+require "test_helpers"
 
 RSpec.configure do |c|
   c.expect_with :rspec do |expectations|
@@ -14,6 +15,7 @@ RSpec.configure do |c|
 
   c.shared_context_metadata_behavior = :apply_to_host_groups
   c.filter_run_when_matching :focus
+  c.run_all_when_everything_filtered = true
   c.example_status_persistence_file_path = "spec/examples.txt"
   c.disable_monkey_patching!
   c.warnings = true
@@ -25,6 +27,8 @@ RSpec.configure do |c|
   end
 
   Kernel.srand c.seed
+
+  c.include TestHelpers
 end
 
 RspecApiDocumentation.configure do |c|
