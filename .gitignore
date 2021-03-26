@@ -1,0 +1,16 @@
+.DS_Store
+/.bundle
+
+.env
+*.local.*
+*.development.*
+
+.byebug_history
+*.sublime*
+*.pem
+*.herokurc
+
+# Test files
+spec/tmp
+coverage/
+spec/examples.txt
