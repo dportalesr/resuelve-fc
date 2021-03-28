@@ -8,12 +8,14 @@ gem "hanami-validations"
 gem "hanami-controller"
 gem "activesupport", require: "active_support"
 gem "awesome_print"
+gem "rake"
 
 group :development, :test do
   gem "guard-puma"
   gem "guard-standardrb"
   gem "guard-livereload", "~> 2.5", require: false
   gem "pry-byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "raddocs"
 end
 
 group :test do

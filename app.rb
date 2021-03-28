@@ -10,4 +10,6 @@ class ResuelveFc < Hanami::API
       post "/", to: App::Actions::CalculatePayrolls.new
     end
   end
+
+  mount Raddocs::App, at: "/docs"
 end

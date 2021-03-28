@@ -9,3 +9,7 @@ Dir["./app/*.rb"].sort.each { |f| require f }
 Dir["./app/actions/*.rb"].sort.each { |f| require f }
 
 APP_ROOT = File.expand_path(".", __dir__)
+
+Raddocs.configure do |c|
+  c.docs_dir = Pathname.new File.join(APP_ROOT, "docs")
+end
