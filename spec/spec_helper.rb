@@ -44,3 +44,5 @@ RspecApiDocumentation.configure do |c|
   c.request_body_formatter = :json
   c.response_body_formatter = proc { |response_content_type, response_body| response_body }
 end
+
+Rack::Attack.enabled = false

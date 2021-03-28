@@ -14,3 +14,5 @@ APP_ROOT = File.expand_path(".", __dir__)
 Raddocs.configure do |c|
   c.docs_dir = Pathname.new File.join(APP_ROOT, "docs")
 end
+
+Rack::Attack.throttle("requests by ip", limit: 5, period: 2) { |req| req.ip }
