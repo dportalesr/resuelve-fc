@@ -15,7 +15,7 @@
     {
       "request_method": "POST",
       "request_path": "/v1/payrolls",
-      "request_body": "{\"jugadores\":[{\"nombre\":\"Elizabeth O\",\"nivel\":\"B\",\"goles\":1,\"sueldo\":78000,\"bono\":32000,\"equipo\":null},{\"nombre\":\"Felix R\",\"nivel\":\"B\",\"goles\":6,\"sueldo\":45000,\"bono\":38000,\"equipo\":null},{\"nombre\":\"Alice O\",\"nivel\":\"C\",\"goles\":3,\"sueldo\":43000,\"bono\":39000,\"equipo\":null},{\"nombre\":\"Bob N\",\"nivel\":\"B\",\"goles\":7,\"sueldo\":49000,\"bono\":27000,\"equipo\":null},{\"nombre\":\"Bob P\",\"nivel\":\"A\",\"goles\":9,\"sueldo\":69000,\"bono\":31000,\"equipo\":null}]}",
+      "request_body": "{\"jugadores\":[{\"nombre\":\"Carlos K\",\"nivel\":\"C\",\"goles\":1,\"sueldo\":62000,\"bono\":34000,\"equipo\":null},{\"nombre\":\"Bob P\",\"nivel\":\"C\",\"goles\":3,\"sueldo\":69000,\"bono\":25000,\"equipo\":null},{\"nombre\":\"Bob F\",\"nivel\":\"C\",\"goles\":2,\"sueldo\":56000,\"bono\":21000,\"equipo\":null},{\"nombre\":\"Felix I\",\"nivel\":\"A\",\"goles\":2,\"sueldo\":69000,\"bono\":30000,\"equipo\":null},{\"nombre\":\"Alice L\",\"nivel\":\"A\",\"goles\":3,\"sueldo\":45000,\"bono\":30000,\"equipo\":null}]}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -28,7 +28,8 @@
       "response_status_text": "Bad Request",
       "response_body": "[binary data]",
       "response_headers": {
-        "Content-Type": "application/json; charset=utf-8"
+        "Content-Type": "application/json; charset=utf-8",
+        "Vary": "Origin"
       },
       "response_content_type": "application/json; charset=utf-8",
       "curl": null
