@@ -1,0 +1,38 @@
+{
+  "resources": [
+    {
+      "name": "Payrolls",
+      "explanation": "Calculate player payrolls",
+      "examples": [
+        {
+          "description": "Calculate payrolls",
+          "link": "payrolls/calculate_payrolls.json",
+          "groups": "all",
+          "route": "/v1/payrolls",
+          "method": "post"
+        },
+        {
+          "description": "Calculate payrolls with custom tabulator",
+          "link": "payrolls/calculate_payrolls_with_custom_tabulator.json",
+          "groups": "all",
+          "route": "/v1/payrolls",
+          "method": "post"
+        },
+        {
+          "description": "Invalid request: player has no team",
+          "link": "payrolls/invalid_request:_player_has_no_team.json",
+          "groups": "all",
+          "route": "/v1/payrolls",
+          "method": "post"
+        },
+        {
+          "description": "Invalid request: team has no name",
+          "link": "payrolls/invalid_request:_team_has_no_name.json",
+          "groups": "all",
+          "route": "/v1/payrolls",
+          "method": "post"
+        }
+      ]
+    }
+  ]
+}

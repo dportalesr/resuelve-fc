@@ -1,0 +1,45 @@
+{
+  "resource": "Payrolls",
+  "resource_explanation": "Calculate player payrolls",
+  "http_method": "POST",
+  "route": "/v1/payrolls",
+  "description": "Calculate payrolls with custom tabulator",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "jugadores",
+      "description": "Array of players"
+    },
+    {
+      "name": "equipos",
+      "description": "Array of team tabulators"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/v1/payrolls",
+      "request_body": "{\"equipos\":[{\"equipo\":\"rojo\",\"niveles\":{\"A\":20,\"B\":30,\"C\":40,\"Cuauh\":50}}],\"jugadores\":[{\"nombre\":\"Juan Pérez\",\"nivel\":\"A\",\"goles\":6,\"sueldo\":20000,\"bono\":5000,\"equipo\":\"rojo\"},{\"nombre\":\"Pedro Páramo\",\"nivel\":\"B\",\"goles\":7,\"sueldo\":300000,\"bono\":6000,\"equipo\":\"rojo\"},{\"nombre\":\"Martín Torres\",\"nivel\":\"C\",\"goles\":16,\"sueldo\":40000,\"bono\":8000,\"equipo\":\"rojo\"},{\"nombre\":\"Luis Hernández\",\"nivel\":\"Cuauh\",\"goles\":19,\"sueldo\":50000,\"bono\":10000,\"equipo\":\"rojo\"}]}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"jugadores\":[{\"nombre\":\"Juan Pérez\",\"nivel\":\"A\",\"goles\":6,\"sueldo\":20000.0,\"bono\":5000.0,\"sueldo_completo\":21607.0,\"equipo\":\"rojo\"},{\"nombre\":\"Pedro Páramo\",\"nivel\":\"B\",\"goles\":7,\"sueldo\":300000.0,\"bono\":6000.0,\"sueldo_completo\":301729.0,\"equipo\":\"rojo\"},{\"nombre\":\"Martín Torres\",\"nivel\":\"C\",\"goles\":16,\"sueldo\":40000.0,\"bono\":8000.0,\"sueldo_completo\":42971.0,\"equipo\":\"rojo\"},{\"nombre\":\"Luis Hernández\",\"nivel\":\"Cuauh\",\"goles\":19,\"sueldo\":50000.0,\"bono\":10000.0,\"sueldo_completo\":53614.0,\"equipo\":\"rojo\"}]}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

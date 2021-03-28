@@ -14,10 +14,7 @@ module App
       end
 
       def call(params)
-        unless params.valid?
-          ap FAILURES: params.errors
-          halt(400)
-        end
+        halt(400) unless params.valid?
 
         @players_payload = params.dig(:jugadores)
         @tabulators_payload = params.dig(:equipos).to_a

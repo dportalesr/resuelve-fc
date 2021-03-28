@@ -11,29 +11,25 @@ resource "Payrolls" do
   end
 
   post "/v1/payrolls" do
-    let(:player) { player_payload }
-    let(:team) { team_payload }
-
     context "200" do
-      parameter :jugadores, type: :array, items: {method: :player, with_example: true}, required: true
-      parameter :equipos, type: :array, items: {method: :team, with_example: true}
+      parameter :jugadores, "Array of players", required: true
 
-      let(:payload) do
-        base_payload
-      end
-
+      let(:payload) { base_payload }
       let(:luis) { response.dig(:jugadores).detect { |this| this[:nombre] =~ /luis/i } }
 
       context "with no explicit tabulator (using default tabulator)" do
         example "Calculate payrolls" do
           expect(status).to eq(200)
-
           # Based on example on README
           expect(luis[:sueldo_completo]).to eq 59_550.0
         end
       end
 
       context "with custom tabulator" do
+        parameter :equipos, "Array of team tabulators"
+
+        let(:equipos) { [team_payload] }
+
         let(:payload) do
           base_payload.tap do |payload|
             payload[:equipos] = [
@@ -52,23 +48,12 @@ resource "Payrolls" do
 
         example "Calculate payrolls with custom tabulator" do
           expect(status).to eq(200)
-
           expect(luis[:sueldo_completo]).to eq 53_614
         end
       end
     end
 
     context "400" do
-      context "with empty payload" do
-        let(:payload) do
-          {}
-        end
-
-        example "Invalid request: No payload" do
-          expect(status).to eq(400)
-        end
-      end
-
       context "with INVALID player data" do
         let(:payload) do
           {jugadores: Array.new(5) { player_payload(equipo: nil) }}

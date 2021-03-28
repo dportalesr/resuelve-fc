@@ -1,0 +1,37 @@
+{
+  "resource": "Payrolls",
+  "resource_explanation": "Calculate player payrolls",
+  "http_method": "POST",
+  "route": "/v1/payrolls",
+  "description": "Invalid request: player has no team",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/v1/payrolls",
+      "request_body": "{\"jugadores\":[{\"nombre\":\"Elizabeth O\",\"nivel\":\"B\",\"goles\":1,\"sueldo\":78000,\"bono\":32000,\"equipo\":null},{\"nombre\":\"Felix R\",\"nivel\":\"B\",\"goles\":6,\"sueldo\":45000,\"bono\":38000,\"equipo\":null},{\"nombre\":\"Alice O\",\"nivel\":\"C\",\"goles\":3,\"sueldo\":43000,\"bono\":39000,\"equipo\":null},{\"nombre\":\"Bob N\",\"nivel\":\"B\",\"goles\":7,\"sueldo\":49000,\"bono\":27000,\"equipo\":null},{\"nombre\":\"Bob P\",\"nivel\":\"A\",\"goles\":9,\"sueldo\":69000,\"bono\":31000,\"equipo\":null}]}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 400,
+      "response_status_text": "Bad Request",
+      "response_body": "[binary data]",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

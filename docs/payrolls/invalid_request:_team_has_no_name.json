@@ -1,0 +1,37 @@
+{
+  "resource": "Payrolls",
+  "resource_explanation": "Calculate player payrolls",
+  "http_method": "POST",
+  "route": "/v1/payrolls",
+  "description": "Invalid request: team has no name",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/v1/payrolls",
+      "request_body": "{\"jugadores\":[{\"nombre\":\"Alice I\",\"nivel\":\"Cuauh\",\"goles\":4,\"sueldo\":62000,\"bono\":24000,\"equipo\":\"negro\"},{\"nombre\":\"Diana R\",\"nivel\":\"Cuauh\",\"goles\":0,\"sueldo\":56000,\"bono\":35000,\"equipo\":\"rojo\"},{\"nombre\":\"Carlos B\",\"nivel\":\"Cuauh\",\"goles\":0,\"sueldo\":76000,\"bono\":37000,\"equipo\":\"amarillo\"},{\"nombre\":\"Alice C\",\"nivel\":\"A\",\"goles\":1,\"sueldo\":65000,\"bono\":25000,\"equipo\":\"azul\"},{\"nombre\":\"Felix Y\",\"nivel\":\"C\",\"goles\":2,\"sueldo\":58000,\"bono\":22000,\"equipo\":\"amarillo\"}],\"equipos\":[{\"equipo\":\"INVALID\",\"niveles\":{\"A\":4,\"B\":5,\"C\":11,\"Cuauh\":18}}]}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 400,
+      "response_status_text": "Bad Request",
+      "response_body": "[binary data]",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}
