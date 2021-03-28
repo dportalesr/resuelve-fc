@@ -36,7 +36,7 @@ module App
 
     def initialize(atts = {})
       @name = atts[:name]
-      @tabulator = atts[:tabulator] || DEFAULT_TABULATOR
+      @tabulator = (atts[:tabulator] || DEFAULT_TABULATOR).transform_keys(&:to_s)
       @players = []
     end
 
@@ -52,6 +52,10 @@ module App
 
     def score
       @score ||= players.sum(&:score)
+    end
+
+    def to_payload
+      players.map(&:to_payload)
     end
   end
 end

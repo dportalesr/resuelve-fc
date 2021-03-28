@@ -14,19 +14,18 @@ module App
       end
 
       def call(params)
-        halt(400) unless params.valid?
+        unless params.valid?
+          ap FAILURES: params.errors
+          halt(400)
+        end
 
         @players_payload = params.dig(:jugadores)
         @tabulators_payload = params.dig(:equipos).to_a
 
-        self.body = {jugadores: players_with_salaries}.to_json
+        self.body = {jugadores: teams.map(&:to_payload).flatten}.to_json
       end
 
       private
-
-      def players_with_salaries
-        teams.map { |this| this.players.map(&:to_payload) }.flatten
-      end
 
       def teams
         @players_payload.each_with_object({}) do |payload, acc|
