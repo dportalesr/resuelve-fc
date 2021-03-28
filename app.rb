@@ -3,7 +3,7 @@
 require_relative "environment"
 
 class ResuelveFc < Hanami::API
-  use Hanami::Middleware::BodyParser, :json
+  include App::Middleware
 
   get "/" do
     redirect "/docs", 302

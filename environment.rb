@@ -4,6 +4,7 @@ Bundler.require :default, ENV.fetch("RACK_ENV", "development")
 require "active_support/core_ext"
 require "hanami/middleware/body_parser"
 require_relative "app/helpers"
+require_relative "app/middleware"
 
 Dir["./app/*.rb"].sort.each { |f| require f }
 Dir["./app/actions/*.rb"].sort.each { |f| require f }

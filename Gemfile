@@ -7,6 +7,8 @@ gem "hanami-api", "~> 0.2.0", require: "hanami/api"
 gem "hanami-validations"
 gem "hanami-controller"
 gem "activesupport", require: "active_support"
+gem "rack-cors", require: "rack/cors"
+gem "rack-attack", require: "rack/attack"
 gem "awesome_print"
 gem "rake"
 
@@ -25,4 +27,5 @@ group :test do
 end
 
 group :production do
+  gem "rack-ssl-enforcer"
 end

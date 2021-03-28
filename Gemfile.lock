@@ -125,8 +125,13 @@ GEM
     puma (5.2.2)
       nio4r (~> 2.0)
     rack (2.2.3)
+    rack-attack (6.5.0)
+      rack (>= 1.0, < 3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-protection (2.1.0)
       rack
+    rack-ssl-enforcer (0.2.9)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     raddocs (2.2.0)
@@ -207,6 +212,9 @@ DEPENDENCIES
   hanami-validations
   pry-byebug
   puma
+  rack-attack
+  rack-cors
+  rack-ssl-enforcer
   rack-test
   raddocs
   rake
