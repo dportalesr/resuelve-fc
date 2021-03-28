@@ -39,5 +39,19 @@ module App
       @tabulator = atts[:tabulator] || DEFAULT_TABULATOR
       @players = []
     end
+
+    def performance
+      return 0 if expected_score.zero?
+
+      score / expected_score.to_f
+    end
+
+    def expected_score
+      @expected_score ||= players.sum(&:expected_score)
+    end
+
+    def score
+      @score ||= players.sum(&:score)
+    end
   end
 end

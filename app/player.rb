@@ -49,8 +49,27 @@ module App
         goles: score,
         sueldo: base_salary,
         bono: bonus,
+        sueldo_completo: full_salary,
         equipo: team.name
       }
+    end
+
+    def full_salary
+      base_salary + (bonus * performance)
+    end
+
+    def performance
+      [team.performance, personal_performance].sum / 2.0
+    end
+
+    def personal_performance
+      return 0 if expected_score.zero?
+
+      score.to_i / expected_score.to_f
+    end
+
+    def expected_score
+      team.tabulator[level].to_i
     end
   end
 end
