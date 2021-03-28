@@ -55,7 +55,7 @@ module App
     end
 
     def full_salary
-      base_salary + (bonus * performance)
+      base_salary + (bonus * performance).round(half: :up)
     end
 
     def performance
