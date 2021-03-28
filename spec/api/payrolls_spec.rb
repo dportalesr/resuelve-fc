@@ -11,8 +11,8 @@ resource "Payrolls" do
   end
 
   post "/v1/payrolls" do
-    let(:player) { make_player }
-    let(:team) { make_team }
+    let(:player) { player_payload }
+    let(:team) { team_payload }
 
     parameter :jugadores, type: :array, items: {method: :player, with_example: true}, required: true
     parameter :equipos, type: :array, items: {method: :team, with_example: true}
@@ -20,7 +20,7 @@ resource "Payrolls" do
     context "200" do
       context "with no explicit tabulator (using default tabulator)" do
         let(:payload) do
-          {}
+          base_payload
         end
 
         let(:luis) { response.dig(:jugadores).detect { |this| this[:nombre] =~ /luis/i } }
@@ -46,7 +46,7 @@ resource "Payrolls" do
 
       context "with INVALID player data" do
         let(:payload) do
-          {jugadores: Array.new(5) { make_player(equipo: nil) }}
+          {jugadores: Array.new(5) { player_payload(equipo: nil) }}
         end
 
         example "Invalid request: player has no team" do
@@ -57,8 +57,8 @@ resource "Payrolls" do
       context "with INVALID team name" do
         let(:payload) do
           {
-            jugadores: Array.new(5) { make_player },
-            equipos: [make_team(name: "INVALID")]
+            jugadores: Array.new(5) { player_payload },
+            equipos: [team_payload(name: "INVALID")]
           }
         end
 
