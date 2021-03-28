@@ -14,21 +14,46 @@ resource "Payrolls" do
     let(:player) { player_payload }
     let(:team) { team_payload }
 
-    parameter :jugadores, type: :array, items: {method: :player, with_example: true}, required: true
-    parameter :equipos, type: :array, items: {method: :team, with_example: true}
-
     context "200" do
+      parameter :jugadores, type: :array, items: {method: :player, with_example: true}, required: true
+      parameter :equipos, type: :array, items: {method: :team, with_example: true}
+
+      let(:payload) do
+        base_payload
+      end
+
+      let(:luis) { response.dig(:jugadores).detect { |this| this[:nombre] =~ /luis/i } }
+
       context "with no explicit tabulator (using default tabulator)" do
-        let(:payload) do
-          base_payload
-        end
-
-        let(:luis) { response.dig(:jugadores).detect { |this| this[:nombre] =~ /luis/i } }
-
         example "Calculate payrolls" do
           expect(status).to eq(200)
 
+          # Based on example on README
           expect(luis[:sueldo_completo]).to eq 59_550.0
+        end
+      end
+
+      context "with custom tabulator" do
+        let(:payload) do
+          base_payload.tap do |payload|
+            payload[:equipos] = [
+              {
+                equipo: "rojo",
+                niveles: {
+                  "A" => 20,
+                  "B" => 30,
+                  "C" => 40,
+                  "Cuauh" => 50
+                }
+              }
+            ]
+          end
+        end
+
+        example "Calculate payrolls with custom tabulator" do
+          expect(status).to eq(200)
+
+          expect(luis[:sueldo_completo]).to eq 53_614
         end
       end
     end
