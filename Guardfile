@@ -1,6 +1,6 @@
 guard "puma" do
   watch("Gemfile.lock")
-  watch(/.+\.(rb|ru)$/)
+  watch(/^docs\/|.+\.(rb|ru)$/)
 end
 
 guard "livereload" do
