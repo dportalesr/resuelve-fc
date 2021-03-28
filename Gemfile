@@ -12,13 +12,13 @@ gem "rack-cors", require: "rack/cors"
 gem "rack-attack", require: "rack/attack"
 gem "awesome_print"
 gem "rake"
+gem "raddocs"
 
 group :development, :test do
   gem "guard-puma"
   gem "guard-standardrb"
   gem "guard-livereload", "~> 2.5", require: false
   gem "pry-byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "raddocs"
 end
 
 group :test do
