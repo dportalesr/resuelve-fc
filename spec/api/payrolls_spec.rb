@@ -4,6 +4,12 @@ resource "Payrolls" do
   explanation "Calculate player payrolls"
   header "Content-Type", "application/json"
 
+  let(:response) { JSON.parse(response_body).with_indifferent_access }
+
+  before do
+    do_request(payload)
+  end
+
   post "/v1/payrolls" do
     let(:player) { make_player }
     let(:team) { make_team }
@@ -12,12 +18,18 @@ resource "Payrolls" do
     parameter :equipos, type: :array, items: {method: :team, with_example: true}
 
     context "200" do
-      let(:payload) do
-        {jugadores: Array.new(5) { make_player }}
-      end
+      context "with no explicit tabulator (using default tabulator)" do
+        let(:payload) do
+          {}
+        end
 
-      example "Calculate payrolls" do
-        expect(status).to eq(200)
+        let(:luis) { response.dig(:jugadores).detect { |this| this[:nombre] =~ /luis/i } }
+
+        example "Calculate payrolls" do
+          expect(status).to eq(200)
+
+          expect(luis[:sueldo_completo]).to eq 59_550.0
+        end
       end
     end
 
@@ -28,7 +40,6 @@ resource "Payrolls" do
         end
 
         example "Invalid request: No payload" do
-          do_request(payload)
           expect(status).to eq(400)
         end
       end
@@ -39,7 +50,6 @@ resource "Payrolls" do
         end
 
         example "Invalid request: player has no team" do
-          do_request(payload)
           expect(status).to eq(400)
         end
       end
@@ -53,7 +63,6 @@ resource "Payrolls" do
         end
 
         example "Invalid request: team has no name" do
-          do_request(payload)
           expect(status).to eq(400)
         end
       end
